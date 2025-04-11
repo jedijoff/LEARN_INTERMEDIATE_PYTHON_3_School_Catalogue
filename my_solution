@@ -89,6 +89,10 @@ class HighSchool(School):
   def get_sports_teams(self):
     return self._sportsTeams
 
+  def __repr__(self):
+    parentRepr = super().__repr__()
+    return parentRepr
+
 
 MySchool = PrimarySchool("Phoenix Infants School", 112, "collection of students starts at 3:25. When you arrive ring the bell to alert Reception.")
 
