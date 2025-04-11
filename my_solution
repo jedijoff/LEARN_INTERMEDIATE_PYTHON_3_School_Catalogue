@@ -78,7 +78,8 @@ class PrimarySchool(School):
   
   def __repr__(self):
     parentRepr = super().__repr__()
-    return parentRepr + "The pickup policy is {pickUpPolicy}".format(pickUpPolicy = self._pickUpPolicy)
+    return parentRepr + "The pickup policy is {pickUpPolicy}".format(pickUpPolicy 
+                                                            = self._pickUpPolicy)
 
 
 class HighSchool(School):
@@ -94,7 +95,10 @@ class HighSchool(School):
     return parentRepr
 
 
-MySchool = PrimarySchool("Phoenix Infants School", 112, "collection of students starts at 3:25. When you arrive ring the bell to alert Reception.")
+# Initialise test PrimarySchool_obj
+# It was initially my test School
+MySchool = PrimarySchool("Phoenix Infants School", 112, "collection of students 
+           starts at 3:25. When you arrive ring the bell to alert Reception.")
 
 print(dir(MySchool))
 NAME = MySchool.get_name()
