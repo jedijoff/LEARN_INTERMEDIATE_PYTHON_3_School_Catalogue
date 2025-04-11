@@ -1,0 +1,111 @@
+class School:
+  # class initialiser
+  def __init__(self, name, level, numberOfStudents=0):
+    """ Initialiser function
+    
+        Initialises new instances of 
+        * School class - which has: 
+                           [params]: 
+                             * name - name of school
+                             * level - 'primary', 'middle', or 'high'
+                             * numberOfStudents
+                           [Methods]:
+                             * get_name()
+                             * get_level()
+                             * get_number_of_students()
+                             * set_number_of_students() 
+        Subclasses:
+        * PrimarySchool class - which has: 
+                                  * All School class params/ methods.
+                                  [additional param]: 
+                                    * pickUpPolicy
+                                  [methods]:
+                                    * get_pick_up_policy()
+        * HighSchool class - which has: 
+                                  * All School class params/ methods.
+                                  [additional param]: 
+                                    * sportsTeams - returns a list of 
+                                      school's sports teams.
+                                  [methods]:
+                                    * get_sports_teams() - returns list
+                                          
+        Initialise School_obj as example:
+        <YourSchool> = School(name, level, numberOfStudents)
+
+        Initialise PrimarySchool_obj as example:
+        <YourPrimarySchool> = PrimarySchool(name, numberOfStudents, pickUpPolicy)
+
+        Initialise HighSchool_obj as example:
+        <YourHighSchool> = HighSchool(name, numberOfStudents, sportsTeams)
+    """ 
+    self._name = name
+    self._level = level
+    self._numberOfStudents = numberOfStudents
+
+  # define the getter functions 
+  def get_name(self):
+    return self._name
+  def get_level(self):
+    return self._level
+  def get_number_of_students(self):
+    return self._numberOfStudents
+
+    # define the setter functions 
+  def set_number_of_students(self, set_numberOfStudents):
+    self._numberOfStudents = set_numberOfStudents
+
+  def __repr__(self):
+    level = self._level
+    name = self._name
+    numberOfStudents = self._numberOfStudents
+    return f"A {level} school named {name} with {numberOfStudents} students."
+
+
+class PrimarySchool(School):
+  """ PrimarySchool, subclass of School class.
+
+      Inherits all attrs and methods from School class.
+
+      New method:
+      get_pickUpPolicy(): returns the pick up policy for the primary school 
+  """
+  def __init__(self, name, numberOfStudents, pickUpPolicy):
+    super().__init__(name=name, numberOfStudents=numberOfStudents, level='primary')
+    self._pickUpPolicy = pickUpPolicy
+
+  def get_pick_up_policy():
+    return self.__repr__()
+  
+  def __repr__(self):
+    parentRepr = super().__repr__()
+    return parentRepr + "The pickup policy is {pickUpPolicy}".format(pickUpPolicy = self._pickUpPolicy)
+
+
+class HighSchool(School):
+  def __init__(self, name, numberOfStudents, sportsTeams):
+    super().__init__(name=name, numberOfStudents=numberOfStudents, level='high')
+    self._sportsTeams = sportsTeams
+  
+  def get_sports_teams(self):
+    return self._sportsTeams
+
+
+MySchool = PrimarySchool("Phoenix Infants School", 112, "collection of students starts at 3:25. When you arrive ring the bell to alert Reception.")
+
+print(dir(MySchool))
+NAME = MySchool.get_name()
+print(NAME)
+number_of_students = MySchool.get_number_of_students()
+print(number_of_students)
+MySchool.set_number_of_students(312)
+number_of_students = MySchool.get_number_of_students()
+
+print(MySchool.get_number_of_students())
+print(MySchool.get_pick_up_policy)
+
+# Testing - HighSchool_obj and getter
+MyHighSchool = HighSchool("Gedling Comprehensive School", 527, sportsTeams=['Athletics', 'Cricket', 'Football', 'Hockey'])
+
+print(MyHighSchool.get_name())
+print(MyHighSchool.get_number_of_students())
+print(MyHighSchool.get_sports_teams())
